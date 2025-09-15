@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-
+import About from './router/About'
+import Cart from './router/Cart'
+import Home from './router/Home'
+import {NavLink,Routes,Route} from 'react-router';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  
+  function getStyle({isActive}){
+    return{
+      color: isActive ? 'red' : ''
+    }
+
+  }
+  return(<>
+  
+  <NavLink to='/About' style={getStyle}>About</NavLink> <br/>
+  <NavLink to='/Cart'style={getStyle}>Cart</NavLink> <br/>
+  <NavLink to='/Home'style={getStyle}>Home</NavLink>
+  
+  <Routes>
+    <Route path='/About' element={<About />} />
+    <Route path='/Cart' element={<Cart />} />
+    <Route path='/Home' element={<Home />} />
+    
+
+  </Routes>
+  </>
+  )
+  
 }
 
 export default App;
